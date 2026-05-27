@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>猜数字小游戏</title>
+</head>
+<body>
+  <h1>猜数字小游戏（1~100）</h1>
+  <p id="tip">我想了一个 1 到 100 之间的数字，你来猜吧！</p>
+  <input type="number" id="guess" min="1" max="100" placeholder="输入你的猜测">
+  <button onclick="checkGuess()">提交</button>
+  <button onclick="location.reload()">再来一次</button>
+  <script>
+    const number = Math.floor(Math.random() * 100) + 1;
+    function checkGuess() {
+      const guess = Number(document.getElementById('guess').value);
+      const tip = document.getElementById('tip');
+      if (!guess) {
+        tip.textContent = "请输入一个有效的数字！";
+        return;
+      }
+      if (guess < number) {
+        tip.textContent = "小了！再试试";
+      } else if (guess > number) {
+        tip.textContent = "大了！再试试";
+      } else {
+        tip.textContent = "恭喜你，猜对了！";
+      }
+    }
+  </script>
+</body>
+</html>
